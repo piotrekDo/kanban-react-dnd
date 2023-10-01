@@ -1,3 +1,13 @@
+## [Drag and drop realizowany z biblioteką _React DnD_](https://react-dnd.github.io/react-dnd/about)
+
+## Instalacja
+Dodajemy zależności `npm install react-dnd react-dnd-html5-backend`
+
+## Wykorzystanie
+
+Najpierw należy owrapować strefę _DnD_ w komponent `DndProvider` i przekazać do niego `HTML5Backend`
+
+```
 import { Container, Heading, SimpleGrid } from '@chakra-ui/react';
 import { Column } from './components/Column';
 import { ColumnType } from './utils/enums';
@@ -32,3 +42,4 @@ function App() {
 }
 
 export default App;
+```

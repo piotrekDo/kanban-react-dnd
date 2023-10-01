@@ -3,6 +3,7 @@ import { TaskModel } from '../utils/models';
 import { Box, IconButton, Textarea } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
 import { AutoResizeTextarea } from './AutoResizeTextArea';
+import { useTaskDragAndDrop } from '../hooks/useDragAndDrop';
 
 type TaskProps = {
   index: number;
@@ -12,6 +13,11 @@ type TaskProps = {
 };
 
 export const Task = ({ index, task, onUpdate: handleUpdate, onDelete: handleDelete }: TaskProps) => {
+  const { ref, isDragging } = useTaskDragAndDrop<HTMLDivElement>({
+    task,
+    index,
+  });
+
   const handleTitleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newTitle = e.target.value;
     handleUpdate(task.id, { ...task, title: newTitle });
@@ -23,6 +29,7 @@ export const Task = ({ index, task, onUpdate: handleUpdate, onDelete: handleDele
 
   return (
     <Box
+      ref={ref}
       as='div'
       role='group'
       position='relative'
@@ -35,6 +42,7 @@ export const Task = ({ index, task, onUpdate: handleUpdate, onDelete: handleDele
       boxShadow='xl'
       cursor='grab'
       bgColor={task.color}
+      opacity={isDragging ? 0.5 : 1}
     >
       <IconButton
         position='absolute'
