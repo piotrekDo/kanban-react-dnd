@@ -3,7 +3,7 @@ import { TaskModel } from '../utils/models';
 import { Box, IconButton, Textarea } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
 import { AutoResizeTextarea } from './AutoResizeTextArea';
-import { useTaskDragAndDrop } from '../hooks/useDragAndDrop';
+import { useTaskDragAndDrop } from '../hooks/useTaskDragAndDrop';
 
 type TaskProps = {
   index: number;
